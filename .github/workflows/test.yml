@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Build Step
         id: build
@@ -47,7 +47,7 @@ jobs:
     needs: overall_status
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v3  # Ensure the repository is checked out
+        uses: actions/checkout@v4  # Ensure the repository is checked out
 
       - name: Send Notifications
         uses: ./.github/actions/notify_teams  # Path to your composite action
