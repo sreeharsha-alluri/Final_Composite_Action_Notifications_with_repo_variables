@@ -47,7 +47,7 @@ jobs:
     needs: overall_status
     steps:
       - name: Send Notifications
-        uses: ./.github/actions/notify_teams  # Path to your composite action
+        uses: ./.github/actions/notify_teams
         with:
           action-name: ${{ github.workflow }}  # Pass the workflow name
           overall-status: ${{ needs.overall_status.outputs.overall_status }}  # Pass the overall status
