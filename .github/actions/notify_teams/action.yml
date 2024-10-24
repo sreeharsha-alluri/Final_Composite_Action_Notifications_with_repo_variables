@@ -69,11 +69,6 @@ runs:
                               "text": "**Workflow Status:** '"${{ inputs.workflow-status }}"' ",
                               "color": "Attention"
                             },
-                            {
-                              "type": "TextBlock",
-                              "text": "The build and test failed. Please check the logs.",
-                              "color": "Attention"
-                            }
                           ],
                           "msteams": {
                             "width": "Full",
