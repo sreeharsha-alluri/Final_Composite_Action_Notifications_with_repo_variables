@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v3  # Updated to use the latest version
+        uses: actions/checkout@v3  # Updated to the latest version
 
       - name: Build Step
         id: build
@@ -46,8 +46,11 @@ jobs:
     runs-on: ubuntu-latest
     needs: overall_status
     steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3  # Ensure the repository is checked out
+
       - name: Send Notifications
-        uses: ./.github/actions/notify_teams
+        uses: ./.github/actions/notify_teams  # Path to your composite action
         with:
           action-name: ${{ github.workflow }}  # Pass the workflow name
           overall-status: ${{ needs.overall_status.outputs.overall_status }}  # Pass the overall status
