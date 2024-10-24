@@ -68,7 +68,7 @@ runs:
                             },
                             {
                               "type": "TextBlock",
-                              "text": "The build and test failed. Please check the logs.",
+                              "text": "The workflow failed. Please check the logs.",
                               "color": "Attention"
                             }
                           ],
@@ -136,7 +136,7 @@ runs:
                             },
                             {
                               "type": "TextBlock",
-                              "text": "The build and test completed successfully.",
+                              "text": "The workflow completed successfully.",
                               "color": "Good"
                             }
                           ],
