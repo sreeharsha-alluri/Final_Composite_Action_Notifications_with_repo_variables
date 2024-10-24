@@ -42,11 +42,13 @@ runs:
         if [[ "${{ inputs.overall-status }}" == "failure" ]]; then
           color="Attention"
           workflow_status="Failure"
-          body_text="The workflow failed. Please check the logs."
+          body_text="The build and test failed. Please check the logs."
+          mention_text="<at>'"${{ inputs.user1-name }}"'</at>, <at>'"${{ inputs.user2-name }}"'</at>, <at>'"${{ inputs.user3-name }}"'</at>"
         else
           color="Good"
           workflow_status="Success"
           body_text="The workflow completed successfully."
+          mention_text=""  # No mentions for success
         fi
         
         curl -H 'Content-Type: application/json' \
@@ -63,7 +65,7 @@ runs:
                             "type": "TextBlock",
                             "size": "Large",
                             "weight": "Bolder",
-                            "text": "<at>'"${{ inputs.user1-name }}"'</at>, <at>'"${{ inputs.user2-name }}"'</at>, <at>'"${{ inputs.user3-name }}"'</at>"
+                            "text": "'"${mention_text}"'"  # Add mentions only for failures
                           },
                           {
                             "type": "TextBlock",
