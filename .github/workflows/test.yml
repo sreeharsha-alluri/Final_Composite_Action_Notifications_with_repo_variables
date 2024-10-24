@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v4  # Latest version
+        uses: actions/checkout@v3
 
       - name: Build Step
         id: build
@@ -47,7 +47,7 @@ jobs:
     needs: overall_status
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v4  # Latest version
+        uses: actions/checkout@v3  # Ensure the repository is checked out
 
       - name: Send Notifications
         uses: ./.github/actions/notify_teams  # Path to your composite action
@@ -55,7 +55,6 @@ jobs:
           action-name: ${{ github.workflow }}  # Pass the workflow name
           overall-status: ${{ needs.overall_status.outputs.overall_status }}  # Pass the overall status
           run-url: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}  # Pass the run URL
-          workflow-status: ${{ needs.overall_status.outputs.notification_message }}  # Pass the notification message
           user1-name: ${{ vars.TEAMS_USER1_NAME }}  # User 1 name from repository variables
           user1-id: ${{ vars.TEAMS_USER1_ID }}      # User 1 ID from repository variables
           user2-name: ${{ vars.TEAMS_USER2_NAME }}  # User 2 name from repository variables
