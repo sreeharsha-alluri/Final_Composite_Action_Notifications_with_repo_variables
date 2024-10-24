@@ -46,6 +46,9 @@ jobs:
     runs-on: ubuntu-latest
     needs: overall_status
     steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2  # Ensure the repository is checked out
+
       - name: Send Notifications
         uses: ./.github/actions/notify_teams  # Path to your composite action
         with:
